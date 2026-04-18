@@ -1,0 +1,16 @@
+\documentclass[tikz, border=2mm]{standalone}
+\usepackage[RPvoltages,
+            europeanvoltages,
+            cuteinductors]{circuitikz}
+
+\begin{document}
+
+\vspace{10pt}
+
+\begin{circuitikz}
+	\draw (0,0) node[circ](V1){} node[above]{$V_1$} -- ++(1,0) coordinate(AUX) to[R=$\frac{R_1}{R_3}$] ++(3,0) node[circ](VA){} node[above]{$V_a$} to[R=$\frac{R_2}{R_3}$] ++(4,0) coordinate(AUX2);
+	\draw (VA) -- ++(0,-1) -- ++(0.5,0) node[op amp, anchor=-](opamp){} (opamp.out) -- (opamp.out -| AUX2) -- (AUX2) (opamp.out -| AUX2) -- ++(1,0) node[circ](VO){} node[above]{$V_o$};
+	\draw (opamp.+) -- ++(-0.5,0) node[circ](VAP){} node[above]{$V_a$} to[R=$1$] ++(0,-2) node[ground]{} (VAP) to[C=$1$] (VAP -| AUX) -- (AUX);
+\end{circuitikz}
+
+\end{document}
