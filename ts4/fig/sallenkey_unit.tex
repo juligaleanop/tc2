@@ -1,0 +1,19 @@
+\documentclass[tikz, border=2mm]{standalone}
+\usepackage[RPvoltages,
+            europeanvoltages,
+            cuteinductors]{circuitikz}
+
+\begin{document}
+
+\vspace{10pt}
+
+\begin{circuitikz}
+	\draw (0,0) node[circ](VI){} node[above]{$V_i$} to[R=$R_1$] ++(2.5,0) node[circ](VA){} node[below]{$V_a$} ;
+	\draw (VA) to[R=$R_2$] ++(2.5,0) node[circ](VB){} node[above]{$V_o$} --++(2,0) node[op amp, noinv input up, anchor=+](u){};
+	\draw (u.out) --++(0.5,0) node[circ](VO){} node[right]{$V_o$} --++(0,2.5) coordinate(AUX) to[C=$C_2$] (AUX-|VA) -- (VA);
+	\draw (u.-) --++(-0.5,0) --++(0,-1) coordinate(AUX) --(AUX -| VO) --(VO){};
+	\draw (VB) to[C=$C_1$] ++(0,-2) node[ground]{};
+
+\end{circuitikz}
+
+\end{document}
