@@ -1,0 +1,17 @@
+\documentclass[tikz, border=2mm]{standalone}
+\usepackage[RPvoltages,
+            europeanvoltages,
+            cuteinductors]{circuitikz}
+
+\begin{document}
+
+\vspace{10pt}
+
+\begin{circuitikz}
+	
+	\draw (0,0) node[circ](1){} node[left]{1} to[L=$L$] ++(2,0) node[circ](4){} node[above]{4} to[C=$C$] ++(0,-2) node[circ](3){} node[below]{3};
+	\draw (4) to[L=$L$] ++(2,0) node[circ](2){} node[right]{2};
+
+\end{circuitikz}
+
+\end{document}

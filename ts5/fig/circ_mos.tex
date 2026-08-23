@@ -1,0 +1,18 @@
+\documentclass[tikz, border=2mm]{standalone}
+\usepackage[RPvoltages,
+            europeanvoltages,
+            cuteinductors]{circuitikz}
+
+\begin{document}
+
+\vspace{10pt}
+
+\begin{circuitikz}
+	
+	\draw (0,0) node[circ]{} node[left]{1} -- ++(1,0) coordinate(1) to[C, l_=$C_{iss}$] ++(0,-4) -- ++(3,0) coordinate(3) -- ++(0,-1) node[circ]{} node[right]{3};
+	\draw (3) -- ++(3,0) to[C=$C_{oss}$] ++(0,4) coordinate(2) --++(1,0) node[circ]{} node[right]{2};
+	\draw (2) -- ++(-2,0) to[cisourceAM, l_=$gm \cdot (V_1-V_3)$] ++(0,-4) ++(0,4) to[C=$C_{rss}$] ++(-4,0);
+
+\end{circuitikz}
+
+\end{document}
